@@ -119,5 +119,5 @@ function showBrand(key){document.querySelectorAll('.brand-tab').forEach(b=>b.set
   document.querySelectorAll('[data-panel]').forEach(p=>{p.hidden=p.dataset.panel!==key;if(!p.hidden&&!created.has(key)){created.add(key);createBrand(key,p)}});document.querySelector('.last-updated').textContent='업데이트 '+BRANDS[key].updated}
 document.querySelectorAll('.brand-tab').forEach(btn=>btn.addEventListener('click',()=>showBrand(btn.dataset.brand)));
 showBrand('hero');
-const toTop=document.querySelector('.to-top');addEventListener('scroll',()=>toTop.classList.toggle('show',scrollY>800),{passive:true});toTop.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
+const toTop=document.querySelector('.to-top');addEventListener('scroll',()=>toTop.classList.toggle('show',scrollY>800),{passive:true});toTop.addEventListener('click',()=>{const y0=scrollY,t0=performance.now(),d=300;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return scrollTo(0,0);const step=t=>{const k=Math.min(1,(t-t0)/d);scrollTo(0,y0*Math.pow(1-k,3));if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)});
 </script></body></html>
