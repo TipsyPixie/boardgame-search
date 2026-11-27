@@ -42,7 +42,7 @@
 <div class="field"><label data-for="type">게임 종류</label><select data-f="type"></select></div>
 <div class="field"><label data-for="region">지역</label><select data-f="region"><option value="">전국</option></select></div>
 <div class="field"><label data-for="store">매장</label><select data-f="store"></select></div>
-<div class="field"><label data-for="category">분류 추가 (모두 만족)</label><div class="combo-wrap"><input data-f="category" type="search" placeholder="분류 검색 후 선택" autocomplete="off" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false"><div data-f="categoryOptions" class="combo-options" role="listbox" hidden></div></div><div data-f="categoryStatus" class="category-status" aria-live="polite"></div><div data-f="chips" class="category-chips" aria-live="polite"></div></div>
+<div class="field"><label data-for="category">분류 추가 (모두 만족)</label><div class="combo-wrap"><input data-f="category" type="search" placeholder="분류 검색 또는 목록에서 선택" autocomplete="off" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false"><div data-f="categoryOptions" class="combo-options" role="listbox" hidden></div></div><div data-f="categoryStatus" class="category-status" aria-live="polite"></div><div data-f="chips" class="category-chips" aria-live="polite"></div></div>
 <div class="field"><label data-for="difficulty">난이도</label><select data-f="difficulty"><option value="">전체 난이도</option></select></div>
 <div class="field"><label data-for="video">설명 영상</label><select data-f="video"><option value="">전체</option><option value="yes">보유</option><option value="no">미보유</option></select></div>
 </div><div class="number-row">
@@ -89,12 +89,12 @@ function createBrand(key,panel){
     const active=options[index];if(active){f.category.setAttribute('aria-activedescendant',active.id);active.scrollIntoView({block:'nearest'})}else f.category.removeAttribute('aria-activedescendant')}
   function renderCategoryOptions(){const query=f.category.value.trim().toLocaleLowerCase('ko');f.categoryOptions.replaceChildren();f.categoryStatus.classList.remove('error');
     f.category.removeAttribute('aria-invalid');activeCategoryIndex=-1;
-    if(!query){categoryMatches=[];closeCategoryOptions();f.categoryStatus.textContent=f.category===document.activeElement?'분류명을 입력해 검색하세요.':'';return}
-    categoryMatches=categoryOptions.filter(value=>value.toLocaleLowerCase('ko').includes(query));
-    if(!categoryMatches.length){closeCategoryOptions();f.categoryStatus.textContent='일치하는 분류가 없습니다.';return}
-    categoryMatches.slice(0,50).forEach((value,index)=>{const option=document.createElement('div');option.className='combo-option'+(cats.has(value)?' is-added':'');option.id=f.categoryOptions.id+'-option-'+index;option.dataset.value=value;option.setAttribute('role','option');option.setAttribute('aria-selected','false');option.setAttribute('aria-disabled',String(cats.has(value)));option.textContent=value+(cats.has(value)?' · 추가됨':'');
+    categoryMatches=categoryOptions.filter(value=>!query||value.toLocaleLowerCase('ko').includes(query));
+    if(!categoryMatches.length){closeCategoryOptions();f.categoryStatus.textContent=query?'일치하는 분류가 없습니다.':'등록된 분류가 없습니다.';return}
+    const visibleMatches=query?categoryMatches.slice(0,50):categoryMatches;
+    visibleMatches.forEach((value,index)=>{const option=document.createElement('div');option.className='combo-option'+(cats.has(value)?' is-added':'');option.id=f.categoryOptions.id+'-option-'+index;option.dataset.value=value;option.setAttribute('role','option');option.setAttribute('aria-selected','false');option.setAttribute('aria-disabled',String(cats.has(value)));option.textContent=value+(cats.has(value)?' · 추가됨':'');
       option.addEventListener('mousedown',event=>event.preventDefault());option.addEventListener('click',()=>{if(cats.has(value)){f.categoryStatus.classList.add('error');f.categoryStatus.textContent='이미 추가된 분류입니다.'}else selectCategory(value)});f.categoryOptions.append(option)});
-    f.categoryOptions.hidden=false;f.category.setAttribute('aria-expanded','true');f.categoryStatus.textContent=categoryMatches.length>50?'앞의 50개 결과를 표시합니다. 더 구체적으로 검색해 주세요.':''}
+    f.categoryOptions.hidden=false;f.category.setAttribute('aria-expanded','true');f.categoryStatus.textContent=query&&categoryMatches.length>50?'앞의 50개 결과를 표시합니다. 더 구체적으로 검색해 주세요.':''}
   function rejectCategoryInput(){f.category.classList.remove('combo-invalid');void f.category.offsetWidth;f.category.classList.add('combo-invalid');f.category.setAttribute('aria-invalid','true');f.categoryStatus.classList.add('error');f.categoryStatus.textContent='목록에서 분류를 선택해 주세요.';setTimeout(()=>{f.category.classList.remove('combo-invalid');f.category.removeAttribute('aria-invalid')},350)}
   function selectCategory(value){if(!categoryOptions.includes(value)||cats.has(value)){rejectCategoryInput();return}cats.add(value);f.category.value='';closeCategoryOptions();f.categoryStatus.textContent='';f.categoryStatus.classList.remove('error');renderChips();update();f.category.focus()}
   const rank=d=>{const i=cfg.levels.indexOf(d);return i<0?Infinity:i};
@@ -137,14 +137,14 @@ function createBrand(key,panel){
   ['type','difficulty','video','sort','store'].forEach(k=>f[k].addEventListener('change',update));
   f.region.addEventListener('change',()=>{fillStores();update()});
   f.category.addEventListener('input',renderCategoryOptions);
-  f.category.addEventListener('focus',()=>{if(f.category.value)renderCategoryOptions();else f.categoryStatus.textContent='분류명을 입력해 검색하세요.'});
+  f.category.addEventListener('focus',renderCategoryOptions);
   f.category.addEventListener('blur',()=>{closeCategoryOptions();if(!f.categoryStatus.classList.contains('error')&&!f.category.value)f.categoryStatus.textContent=''});
   f.category.addEventListener('keydown',event=>{const count=f.categoryOptions.querySelectorAll('[role="option"]').length;
     if(event.key==='ArrowDown'&&count){event.preventDefault();markCategoryOption(Math.min(activeCategoryIndex+1,count-1))}
     else if(event.key==='ArrowUp'&&count){event.preventDefault();markCategoryOption(Math.max(activeCategoryIndex-1,0))}
     else if(event.key==='Escape'){closeCategoryOptions()}
     else if(event.key==='Enter'){event.preventDefault();const options=[...f.categoryOptions.querySelectorAll('[role="option"]')],active=options[activeCategoryIndex],exact=categoryMatches.find(value=>value.toLocaleLowerCase('ko')===f.category.value.trim().toLocaleLowerCase('ko'));
-      if(active)selectCategory(active.dataset.value);else if(exact)selectCategory(exact);else rejectCategoryInput()}});
+      if(active)selectCategory(active.dataset.value);else if(exact)selectCategory(exact);else if(f.category.value.trim())rejectCategoryInput()}});
   panel.querySelector('form').addEventListener('submit',e=>e.preventDefault());
   f.reset.addEventListener('click',()=>{cats.clear();renderChips();['q','players','minutes'].forEach(k=>f[k].value='');
     ['category','difficulty','video','sort','region'].forEach(k=>f[k].value='');closeCategoryOptions();f.categoryStatus.textContent='';f.categoryStatus.classList.remove('error');f.category.removeAttribute('aria-invalid');if(!f.type.disabled)f.type.value='';fillStores();update()});
