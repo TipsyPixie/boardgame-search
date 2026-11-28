@@ -25,12 +25,21 @@
 .toolbar{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow)}.filter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.field{display:flex;flex-direction:column;gap:5px;min-width:0}.field.search{grid-column:span 2}.field label{font-size:11px;font-weight:700;color:var(--muted)}.field input,.field select{height:42px;border:1px solid var(--line);background:var(--field);border-radius:10px;padding:0 10px;color:var(--ink);font:inherit;font-size:13px;min-width:0;width:100%}.field input:focus,.field select:focus{outline:3px solid var(--focus);border-color:var(--accent)}.field select:disabled{opacity:.68}.search input{padding-left:37px}.search{position:relative}.search:before{content:"⌕";position:absolute;left:12px;bottom:3px;font-size:25px;color:var(--accent)}
 .category-chips{display:flex;gap:6px;flex-wrap:wrap;min-height:0;margin-top:7px}.chip{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border:1px solid var(--accent-line);background:var(--accent-soft);border-radius:999px;color:var(--badge-ink);font-size:12px;font-weight:700}.chip button{border:0;background:transparent;color:inherit;padding:0;font-size:16px;line-height:1;cursor:pointer}
 .combo-wrap{position:relative;width:100%}.combo-options{position:absolute;z-index:10;top:calc(100% + 4px);left:0;right:0;max-height:240px;overflow:auto;padding:4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);box-shadow:var(--shadow)}.combo-options[hidden]{display:none}.combo-option{padding:8px 10px;border-radius:7px;font-size:13px;cursor:pointer}.combo-option:hover,.combo-option[aria-selected="true"]{background:var(--accent-soft);color:var(--badge-ink)}.combo-option.is-added{color:var(--muted);cursor:default}.category-status{min-height:0;margin:5px 1px 0;color:var(--muted);font-size:11px}.category-status:empty{display:none}.category-status.error{color:var(--accent);font-weight:700}.combo-invalid{border-color:var(--accent)!important;animation:combo-shake .24s ease-in-out}@keyframes combo-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-.number-row{display:flex;align-items:end;gap:10px;margin-top:11px;flex-wrap:wrap}.number-row .field{width:150px}.actions{margin-left:auto;display:flex;gap:8px}.button{height:39px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}.button:hover{border-color:var(--accent);color:var(--accent)}.button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.actions{display:flex;justify-content:flex-end;margin-top:11px}.button{height:39px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}.button:hover{border-color:var(--accent);color:var(--accent)}.button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .result-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:21px 2px 12px}.result-count{font-size:14px;font-weight:700}.result-count span{font-weight:400;color:var(--muted)}.result-count strong{font-size:20px;color:var(--accent);margin-right:4px}.sort{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.sort select{height:36px;padding:0 30px 0 10px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink);font:inherit}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:0 3px 12px rgba(0,0,0,.035);min-width:0;transition:transform .15s ease,box-shadow .15s ease}.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.card-head{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:11px;align-items:center;margin-bottom:10px}.search-links{align-self:start;display:flex;flex-direction:column;gap:6px}.search-link{display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;background:var(--panel)}.search-link:hover{border-color:var(--accent)}.search-link:focus-visible{outline:3px solid var(--focus)}.search-link svg{width:16px;height:16px}.thumb{width:78px;height:78px;border-radius:11px;overflow:hidden;background:linear-gradient(135deg,var(--thumb-a),var(--thumb-b));display:grid;place-items:center;color:var(--muted);font-size:10px;text-align:center;flex:none}.thumb img{width:100%;height:100%;display:block;object-fit:cover}.thumb img[hidden]{display:none}.thumb .placeholder{padding:4px}.title-side{min-width:0}.card h2{font-size:16px;line-height:1.35;margin:0 0 7px;letter-spacing:-.025em;overflow-wrap:anywhere}.badges{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:10px;padding:3px 7px;border-radius:999px;background:var(--badge-bg);color:var(--badge-ink);font-weight:700}.badge.video{background:#fff4df;color:#94631b}.badge.no-video{background:#eef1ef;color:#6a7877}.meta{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 9px}.meta span{background:var(--surface);border:1px solid var(--meta-border);border-radius:8px;padding:4px 7px;font-size:11px;color:var(--muted)}.meta b{color:var(--ink)}.desc{font-size:13px;color:var(--muted);margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px;box-shadow:0 3px 12px rgba(0,0,0,.035);min-width:0;transition:transform .15s ease,box-shadow .15s ease}.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.card-head{display:grid;grid-template-columns:78px minmax(0,1fr);gap:11px;align-items:center;margin-bottom:10px}
+.card-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:12px}
+.card-searches{display:flex;gap:6px;margin-inline-start:auto}
+.card-link{display:inline-flex;justify-content:center;align-items:center;gap:6px;min-width:36px;height:36px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font-size:12px;font-weight:700;text-decoration:none}
+.card-link.with-label{padding-inline:9px;white-space:nowrap}
+.card-link:hover{border-color:var(--accent)}
+.card-link:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.card-link svg{width:16px;height:16px;flex:none}
+@media(pointer:coarse){.card-link{min-width:44px;height:44px}}
+.thumb{width:78px;height:78px;border-radius:11px;overflow:hidden;background:linear-gradient(135deg,var(--thumb-a),var(--thumb-b));display:grid;place-items:center;color:var(--muted);font-size:10px;text-align:center;flex:none}.thumb img{width:100%;height:100%;display:block;object-fit:cover}.thumb img[hidden]{display:none}.thumb .placeholder{padding:4px}.title-side{min-width:0}.card h2{font-size:16px;line-height:1.35;margin:0 0 7px;letter-spacing:-.025em;overflow-wrap:anywhere}.badges{display:flex;gap:5px;flex-wrap:wrap}.badge{font-size:10px;padding:3px 7px;border-radius:999px;background:var(--badge-bg);color:var(--badge-ink);font-weight:700}.meta{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 9px}.meta span{background:var(--surface);border:1px solid var(--meta-border);border-radius:8px;padding:4px 7px;font-size:11px;color:var(--muted)}.meta b{color:var(--ink)}.desc{font-size:13px;color:var(--muted);margin:0;white-space:pre-line;overflow-wrap:anywhere}
 .empty{grid-column:1/-1;background:var(--panel);border:1px dashed var(--line);border-radius:15px;padding:42px 18px;text-align:center;color:var(--muted)}.empty strong{display:block;font-size:17px;color:var(--ink);margin-bottom:4px}.more-wrap{grid-column:1/-1;text-align:center;padding:7px 0 0}.scroll-sentinel{height:1px;min-height:1px;padding:0}.more-wrap .button{min-width:200px}.footnote{font-size:11px;color:var(--muted);margin:18px 2px 0}.to-top{position:fixed;right:20px;bottom:20px;z-index:20;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--accent);box-shadow:var(--shadow);font:inherit;font-size:20px;font-weight:800;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}.to-top.show{opacity:1;visibility:visible}@media(max-width:640px){.to-top{right:16px;bottom:16px}}.site-link{color:var(--accent);text-decoration:none}.site-link:hover{text-decoration:underline}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.field.search{grid-column:span 2}}
-@media(max-width:640px){.brand-tabs{padding:10px 10px 4px;flex-wrap:wrap}.last-updated{width:100%;text-align:right}.brand-tab{flex:1 1 0;min-width:0;height:52px;padding-inline:6px}.brand-tab img{width:100%;height:31px;max-width:120px}.page-intro{padding:6px 10px 0}.page-intro h1{font-size:16px}.noscript-note{padding:0 10px}.brand-content{padding:8px 10px 30px}.toolbar{padding:11px;border-radius:14px}.filter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.field.search{grid-column:1/-1}.field label{font-size:10px}.field input,.field select{height:40px;padding-left:8px;padding-right:6px;font-size:12px}.search input{padding-left:34px}.number-row{gap:8px}.number-row .field{width:calc(50% - 4px)}.actions{width:100%;margin:2px 0 0}.actions .button{flex:1}.grid{grid-template-columns:1fr;gap:9px}.card{padding:12px;border-radius:13px}.card-head{grid-template-columns:68px minmax(0,1fr) auto;gap:10px}.thumb{width:68px;height:68px;border-radius:9px}.card h2{font-size:15px}.meta span{font-size:10px}.result-bar{align-items:flex-start;flex-direction:column;margin-top:17px}.sort{width:100%;justify-content:space-between}.sort select{flex:1;max-width:220px}.desc{font-size:13px}}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.field.search{grid-column:1/-1}}
+@media(max-width:640px){.brand-tabs{padding:10px 10px 4px;flex-wrap:wrap}.last-updated{width:100%;text-align:right}.brand-tab{flex:1 1 0;min-width:0;height:52px;padding-inline:6px}.brand-tab img{width:100%;height:31px;max-width:120px}.page-intro{padding:6px 10px 0}.page-intro h1{font-size:16px}.noscript-note{padding:0 10px}.brand-content{padding:8px 10px 30px}.toolbar{padding:11px;border-radius:14px}.filter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.field label{font-size:10px}.field input,.field select{height:40px;padding-left:8px;padding-right:6px;font-size:12px}.search input{padding-left:34px}.actions{margin-top:8px}.actions .button{width:100%}.grid{grid-template-columns:1fr;gap:9px}.card{padding:12px;border-radius:13px}.card-head{grid-template-columns:68px minmax(0,1fr);gap:10px}.thumb{width:68px;height:68px;border-radius:9px}.card h2{font-size:15px}.meta span{font-size:10px}.result-bar{align-items:flex-start;flex-direction:column;margin-top:17px}.sort{width:100%;justify-content:space-between}.sort select{flex:1;max-width:220px}.desc{font-size:13px}}
 .result-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .result-tools .button{height:36px;min-inline-size:9.25em;white-space:nowrap}
 .share-status{margin:0 2px 8px;color:var(--muted);font-size:12px}
@@ -43,25 +52,27 @@
 <nav class="brand-tabs" role="tablist" aria-label="브랜드 선택"><button class="brand-tab" type="button" role="tab" aria-label="레드버튼" title="레드버튼" aria-selected="true" data-brand="redbutton"><img src="https://redbutton.co.kr/wp-content/uploads/2023/02/9p-1.-%EB%B8%8C%EB%9E%9C%EB%93%9C_%EB%A1%9C%EA%B3%A0web.png" alt="레드버튼"></button><button class="brand-tab" type="button" role="tab" aria-label="홈즈앤루팡" title="홈즈앤루팡" aria-selected="false" data-brand="holmes"><img src="./assets/holmes/logo.png" alt="홈즈앤루팡"></button><button class="brand-tab" type="button" role="tab" aria-label="히어로" title="히어로" aria-selected="false" data-brand="hero"><img src="https://www.funhero.co.kr/common/img/layout/logo.svg" alt="히어로"></button><span class="last-updated"></span></nav>
  <main><header class="page-intro"><h1>보드게임카페 보유 게임 찾기</h1><p>레드버튼, 홈즈앤루팡, 히어로 보드게임카페의 보드게임을 지역, 매장, 인원, 게임 시간, 난이도, 분류로 찾아보세요.<br>분류에서 머더미스터리를 지정하면 머더미스터리만 검색할 수 있습니다.</p></header><noscript><p class="noscript-note">게임을 검색하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript><section class="brand-content" data-panel="redbutton"></section><section class="brand-content" data-panel="holmes" hidden></section><section class="brand-content" data-panel="hero" hidden></section></main>
 <button class="to-top" type="button" aria-label="맨 위로" title="맨 위로">↑</button>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="google-icon" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></symbol><symbol id="naver-icon" viewBox="0 0 24 24"><path fill="#03C75A" d="M3 3h6l6 9.6V3h6v18h-6L9 11.4V21H3z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="google-icon" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></symbol><symbol id="naver-icon" viewBox="0 0 24 24"><path fill="#03C75A" d="M3 3h6l6 9.6V3h6v18h-6L9 11.4V21H3z"/></symbol>
+<symbol id="play-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.75"/><path fill="currentColor" d="m10 8 6 4-6 4z"/></symbol>
+<symbol id="youtube-icon" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="4" fill="#ff0033"/><path fill="#fff" d="m10 8.5 6 3.5-6 3.5z"/></symbol></svg>
 <template id="panelTpl"><form class="toolbar" aria-label="게임 필터"><div class="filter-grid">
 <div class="field search"><label data-for="q">게임 검색</label><input data-f="q" type="search" placeholder="이름, 설명, 분류 검색" autocomplete="off"></div>
 <div class="field"><label data-for="region">지역</label><select data-f="region"><option value="">전국</option></select></div>
 <div class="field"><label data-for="store">매장</label><select data-f="store"></select></div>
-<div class="field"><label data-for="category">분류 추가 (모두 만족)</label><div class="combo-wrap"><input data-f="category" type="search" placeholder="분류 검색 또는 목록에서 선택" autocomplete="off" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false"><div data-f="categoryOptions" class="combo-options" role="listbox" hidden></div></div><div data-f="categoryStatus" class="category-status" aria-live="polite"></div><div data-f="chips" class="category-chips" aria-live="polite"></div></div>
+<div class="field"><label data-for="category">분류 추가 (모두 만족)</label><div class="combo-wrap"><input data-f="category" type="search" placeholder="검색 또는 선택" autocomplete="off" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false"><div data-f="categoryOptions" class="combo-options" role="listbox" hidden></div></div><div data-f="categoryStatus" class="category-status" aria-live="polite"></div><div data-f="chips" class="category-chips" aria-live="polite"></div></div>
 <div class="field"><label data-for="difficulty">난이도</label><select data-f="difficulty"><option value="">전체 난이도</option></select></div>
-<div class="field"><label data-for="video">설명 영상</label><select data-f="video"><option value="">전체</option><option value="yes">보유</option><option value="no">미보유</option></select></div>
-</div><div class="number-row">
-<div class="field"><label data-for="players">인원 수에 맞는 게임</label><input data-f="players" type="number" min="1" max="99" inputmode="numeric" placeholder="예: 5명"></div>
-<div class="field"><label data-for="minutes">최대 게임시간 (분)</label><input data-f="minutes" type="number" min="1" max="999" inputmode="numeric" placeholder="예: 30분"></div>
+<div class="field"><label data-for="players">인원 수 (명)</label><input data-f="players" type="number" min="1" max="99" inputmode="numeric" placeholder="예: 5"></div>
+<div class="field"><label data-for="minutes">최대 게임시간 (분)</label><input data-f="minutes" type="number" min="1" max="999" inputmode="numeric" placeholder="예: 30"></div>
+</div>
 <div class="actions"><button class="button" data-f="reset" type="button">필터 초기화</button></div>
-</div></form>
+</form>
 <div class="result-bar"><div class="result-count" aria-live="polite"><strong data-f="shown">0</strong>개 검색 결과 <span data-f="displayed"></span></div>
 <div class="result-tools"><label class="sort">정렬 <select data-f="sort"><option value="source">사이트 순서</option><option value="name">이름순</option><option value="short">짧은 게임시간순</option><option value="long">긴 게임시간순</option></select></label><button class="button" data-f="share" type="button">검색 링크 복사</button></div></div>
 <p class="share-status share-announcement" data-f="shareStatus" role="status"></p>
 <div class="field share-fallback" data-f="shareFallback" hidden><label data-for="shareUrl">공유 링크</label><input data-f="shareUrl" type="url" readonly></div>
 <section data-f="results" class="grid" aria-live="polite"></section>
 <p class="footnote" data-f="footnote"></p></template>
+<!-- local-catalogs -->
 <script>
 const BRANDS={
   hero:{levels:['입문','초급','중급','고급','프로'],source:'히어로 보드게임카페 게임 목록',sourceUrl:'https://www.funhero.co.kr/store/segame.php?category_info_id=0&game_title=&region=&store_id=0',scope:'지역과 매장을 고르지 않은 전국 기준으로 모은 보드게임과 머더미스터리',availability:'게임 상세의 ‘보유매장 모두 보기’'},
@@ -70,7 +81,7 @@ const BRANDS={
 };
 const PAGE_SIZE=60;
 const textFields=['q','players','minutes'];
-const selectFields=['difficulty','video','sort'];
+const selectFields=['difficulty','sort'];
 function filterNumber(field){
   return field.value&&field.validity.valid?Number(field.value):null;
 }
@@ -79,6 +90,9 @@ function selectOption(select,value,byLabel=false){
   select.value=option?.value??select.options[0].value;
 }
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function cardLink(href,icon,label,text=''){
+  return '<a class="card-link'+(text?' with-label':'')+'" href="'+esc(href)+'" target="_blank" rel="noopener" title="'+esc(label)+'" aria-label="'+esc(label)+'"><svg aria-hidden="true"><use href="#'+icon+'"/></svg>'+esc(text)+'</a>';
+}
 const unique=a=>[...new Set(a.filter(Boolean))].sort((x,y)=>x.localeCompare(y,'ko'));
 const parsePlayers=s=>{const n=(s.match(/\d+/g)||[]).map(Number);return n.length?{min:n[0],max:n[1]??n[0]}:null};
 const parseMinutes=s=>{const m=s.match(/(\d+(?:\.\d+)?)\s*(시간|분)/);return m?Number(m[1])*(m[2]==='시간'?60:1):null};
@@ -153,9 +167,22 @@ function createBrand(key,panel,data){
     update();
   }
   f.footnote.innerHTML=esc(cfg.scope)+' 목록입니다. 지역과 매장 필터는 '+esc(cfg.availability)+' 정보로 만들었습니다. 데이터 출처: <a class="site-link" href="'+esc(cfg.sourceUrl)+'" target="_blank" rel="noopener">'+esc(cfg.source)+'</a>.';
-  // 카드·페이지
-  const card=g=>{const img=g.i?data.imgBase+g.i:'';
-    return '<article class="card"><div class="card-head"><div class="thumb">'+(img?'<img src="'+esc(img)+'" alt="'+esc(g.n)+' 게임 이미지" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="placeholder" hidden>이미지 없음</span>':'<span class="placeholder">이미지 없음</span>')+'</div><div class="title-side"><h2>'+esc(g.n)+'</h2><div class="badges">'+g.cats.map(x=>'<span class="badge">'+esc(x)+'</span>').join('')+'<span class="badge '+(g.v?'video':'no-video')+'">영상 '+(g.v?'보유':'미보유')+'</span></div></div><div class="search-links"><a class="search-link" href="https://www.google.com/search?q='+encodeURIComponent('보드게임 '+g.n)+'" target="_blank" rel="noopener" title="구글에서 검색" aria-label="구글에서 '+esc(g.n)+' 검색"><svg aria-hidden="true"><use href="#google-icon"/></svg></a><a class="search-link" href="https://search.naver.com/search.naver?query='+encodeURIComponent('보드게임 '+g.n)+'" target="_blank" rel="noopener" title="네이버에서 검색" aria-label="네이버에서 '+esc(g.n)+' 검색"><svg aria-hidden="true"><use href="#naver-icon"/></svg></a></div></div><div class="meta"><span>난이도 <b>'+esc(g.l||'미기재')+'</b></span><span>인원 <b>'+esc(g.p||'미기재')+'</b></span><span>시간 <b>'+esc(g.m||'미기재')+'</b></span></div><p class="desc">'+esc(g.d||'설명 미기재')+'</p></article>'};
+  function card(g){
+    const img=g.i?data.imgBase+g.i:'';
+    const search='보드게임 '+g.n;
+    const query=encodeURIComponent(search);
+    const video=g.videoUrl?.startsWith('https://')
+      ?cardLink(g.videoUrl,'play-icon',g.n+' 설명 영상','설명 영상')
+      :cardLink('https://www.youtube.com/results?search_query='+encodeURIComponent(search+' 룰 설명'),'youtube-icon','유튜브에서 '+g.n+' 설명 영상 검색','검색');
+    const google=cardLink('https://www.google.com/search?q='+query,'google-icon','구글에서 '+g.n+' 검색');
+    const naver=cardLink('https://search.naver.com/search.naver?query='+query,'naver-icon','네이버에서 '+g.n+' 검색');
+    const thumb=img?'<img src="'+esc(img)+'" alt="'+esc(g.n)+' 게임 이미지" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="placeholder" hidden>이미지 없음</span>':'<span class="placeholder">이미지 없음</span>';
+    const categories=g.cats.map(name=>'<span class="badge">'+esc(name)+'</span>').join('');
+    return '<article class="card"><div class="card-head"><div class="thumb">'+thumb+'</div><div class="title-side"><h2>'+esc(g.n)+'</h2><div class="badges">'+categories+'</div></div></div>'
+      +'<div class="meta"><span>난이도 <b>'+esc(g.l||'미기재')+'</b></span><span>인원 <b>'+esc(g.p||'미기재')+'</b></span><span>시간 <b>'+esc(g.m||'미기재')+'</b></span></div>'
+      +'<p class="desc">'+esc(g.d||'설명 미기재')+'</p>'
+      +'<footer class="card-actions">'+video+'<div class="card-searches">'+google+naver+'</div></footer></article>';
+  }
   f.results.addEventListener('error',e=>{const img=e.target;if(img.tagName==='IMG'){img.hidden=true;if(img.nextElementSibling)img.nextElementSibling.hidden=false}},true);
   let filtered=[],rendered=0,moreObserver=null;
   const clearMore=()=>{if(moreObserver){moreObserver.disconnect();moreObserver=null}const old=f.results.querySelector('.more-wrap');if(old)old.remove()};
@@ -179,9 +206,9 @@ function createBrand(key,panel,data){
     copyAttempt++;
     resetShareFeedback();
     saveSearchAddress(key,getFilters());
-    const q=f.q.value.trim().toLocaleLowerCase('ko'),sel=[...cats],d=f.difficulty.value,v=f.video.value,
+    const q=f.q.value.trim().toLocaleLowerCase('ko'),sel=[...cats],d=f.difficulty.value,
       pn=filterNumber(f.players),mx=filterNumber(f.minutes),r=f.region.value===''?null:+f.region.value,s=f.store.value===''?null:+f.store.value;
-    filtered=model.filter(g=>(!q||g.search.includes(q))&&sel.every(c=>g.cats.includes(c))&&(!d||g.l===d)&&(!v||(v==='yes')===!!g.v)
+    filtered=model.filter(g=>(!q||g.search.includes(q))&&sel.every(c=>g.cats.includes(c))&&(!d||g.l===d)
       &&(!pn||(g.players&&g.players.min<=pn&&g.players.max>=pn))&&(!mx||(g.minutes!==null&&g.minutes<=mx))&&(r===null||g.regionSet.has(r))&&(s===null||g.storeSet.has(s)));
     const sort=f.sort.value;
     if(sort==='name')filtered.sort((a,b)=>a.n.localeCompare(b.n,'ko')||a.index-b.index);
@@ -270,17 +297,26 @@ window.receiveBoardgameCatalog=(key,data)=>{
   }catch(error){console.error(error)}
 };
 function loadBrand(key){
-  const panel=panels.get(key),script=document.createElement('script');
+  const panel=panels.get(key);
+  let script;
   const status=document.createElement('p');status.className='empty';status.setAttribute('role','status');
   status.textContent='게임 목록을 불러오는 중입니다.';panel.replaceChildren(status);
   const load={panel,completed:false};pending.set(key,load);
   function finish(){
-    script.remove();pending.delete(key);
+    script?.remove();pending.delete(key);
     if(load.completed)return;
     status.textContent='게임 목록을 불러오지 못했습니다. ';
     const retry=document.createElement('button');retry.type='button';retry.className='button';retry.textContent='다시 시도';
     retry.addEventListener('click',()=>loadBrand(key));status.append(retry);panel.replaceChildren(status);
   }
+  const embedded=document.getElementById('catalog-'+key);
+  if(embedded){
+    try{window.receiveBoardgameCatalog(key,JSON.parse(embedded.textContent));}catch(error){console.error(error);}
+    if(load.completed)embedded.remove();
+    finish();
+    return;
+  }
+  script=document.createElement('script');
   script.onload=finish;script.onerror=finish;
   script.src='./assets/catalogs/'+key+'.js';document.head.append(script);
 }
