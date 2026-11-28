@@ -32,9 +32,10 @@
 @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.field.search{grid-column:span 2}}
 @media(max-width:640px){.brand-tabs{padding:10px 10px 4px;flex-wrap:wrap}.last-updated{width:100%;text-align:right}.brand-tab{flex:1 1 0;min-width:0;height:52px;padding-inline:6px}.brand-tab img{width:100%;height:31px;max-width:120px}.page-intro{padding:6px 10px 0}.page-intro h1{font-size:16px}.noscript-note{padding:0 10px}.brand-content{padding:8px 10px 30px}.toolbar{padding:11px;border-radius:14px}.filter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.field.search{grid-column:1/-1}.field label{font-size:10px}.field input,.field select{height:40px;padding-left:8px;padding-right:6px;font-size:12px}.search input{padding-left:34px}.number-row{gap:8px}.number-row .field{width:calc(50% - 4px)}.actions{width:100%;margin:2px 0 0}.actions .button{flex:1}.grid{grid-template-columns:1fr;gap:9px}.card{padding:12px;border-radius:13px}.card-head{grid-template-columns:68px minmax(0,1fr) auto;gap:10px}.thumb{width:68px;height:68px;border-radius:9px}.card h2{font-size:15px}.meta span{font-size:10px}.result-bar{align-items:flex-start;flex-direction:column;margin-top:17px}.sort{width:100%;justify-content:space-between}.sort select{flex:1;max-width:220px}.desc{font-size:13px}}
 .result-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.result-tools .button{height:36px;white-space:nowrap}
+.result-tools .button{height:36px;min-inline-size:9.25em;white-space:nowrap}
 .share-status{margin:0 2px 8px;color:var(--muted);font-size:12px}
-.share-status:empty,.share-fallback[hidden]{display:none}
+.share-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;margin:0}
+.share-fallback[hidden]{display:none}
 .share-fallback{margin:0 2px 12px}
 @media(max-width:640px){.result-tools{width:100%}.result-tools .sort{flex:1;min-width:0}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
@@ -57,7 +58,7 @@
 </div></form>
 <div class="result-bar"><div class="result-count" aria-live="polite"><strong data-f="shown">0</strong>개 검색 결과 <span data-f="displayed"></span></div>
 <div class="result-tools"><label class="sort">정렬 <select data-f="sort"><option value="source">사이트 순서</option><option value="name">이름순</option><option value="short">짧은 게임시간순</option><option value="long">긴 게임시간순</option></select></label><button class="button" data-f="share" type="button">검색 링크 복사</button></div></div>
-<p class="share-status" data-f="shareStatus" role="status"></p>
+<p class="share-status share-announcement" data-f="shareStatus" role="status"></p>
 <div class="field share-fallback" data-f="shareFallback" hidden><label data-for="shareUrl">공유 링크</label><input data-f="shareUrl" type="url" readonly></div>
 <section data-f="results" class="grid" aria-live="polite"></section>
 <p class="footnote" data-f="footnote"></p></template>
@@ -165,9 +166,18 @@ function createBrand(key,panel,data){
     if('IntersectionObserver'in window){moreObserver=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting))more()},{rootMargin:'500px 0px'});moreObserver.observe(s)}
     else{s.className='more-wrap';s.removeAttribute('aria-hidden');s.innerHTML='<button class="button primary" type="button">더 보기</button>';s.querySelector('button').addEventListener('click',more)}}
   // 필터링
-  let inputTimer;
+  const shareLabel=f.share.textContent;
+  let inputTimer,shareTimer,copyAttempt=0;
+  function resetShareFeedback(){
+    clearTimeout(shareTimer);
+    f.share.textContent=shareLabel;
+    f.shareStatus.textContent='';
+    f.shareStatus.classList.add('share-announcement');
+    f.shareFallback.hidden=true;
+  }
   function update(){clearTimeout(inputTimer);clearMore();
-    f.shareStatus.textContent='';f.shareFallback.hidden=true;
+    copyAttempt++;
+    resetShareFeedback();
     saveSearchAddress(key,getFilters());
     const q=f.q.value.trim().toLocaleLowerCase('ko'),sel=[...cats],d=f.difficulty.value,v=f.video.value,
       pn=filterNumber(f.players),mx=filterNumber(f.minutes),r=f.region.value===''?null:+f.region.value,s=f.store.value===''?null:+f.store.value;
@@ -201,16 +211,25 @@ function createBrand(key,panel,data){
   panel.querySelector('form').addEventListener('submit',e=>e.preventDefault());
   f.reset.addEventListener('click',()=>restoreFilters(new URLSearchParams()));
   f.share.addEventListener('click',async()=>{
+    const attempt=++copyAttempt;
     const filters=getFilters();
     saveSearchAddress(key,filters);
     const url=new URL(document.querySelector('link[rel="canonical"]').href);
     url.hash=searchFragment(key,filters);
     f.shareFallback.hidden=true;
+    f.shareStatus.classList.add('share-announcement');
     try{
       await navigator.clipboard.writeText(url.href);
+      if(attempt!==copyAttempt)return;
+      clearTimeout(shareTimer);
+      f.share.textContent='복사 완료!';
       f.shareStatus.textContent='검색 링크를 복사했습니다.';
+      shareTimer=setTimeout(resetShareFeedback,2000);
     }catch{
+      if(attempt!==copyAttempt)return;
+      resetShareFeedback();
       f.shareStatus.textContent='아래 링크를 복사해 주세요.';
+      f.shareStatus.classList.remove('share-announcement');
       f.shareFallback.hidden=false;
       f.shareUrl.value=url.href;
       f.shareUrl.focus();f.shareUrl.select();
